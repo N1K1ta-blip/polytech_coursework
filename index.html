@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Матрешка</title>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <link rel="stylesheet" type="text/css" href="./style/index.css">
+    <link rel="stylesheet" type="text/css" href="./style/loader.css">
+</head>
+
+<body>
+    <div class="loader firstAnimation" id="loader"></div>
+    <div class="startBlock startAnimation" id="startBlock">
+        <div class="startBlock__title">
+            <h1>"Матрешка"</h1>
+            <p class="subtitle">Помоги матрешке добраться до своих сестер</p>
+            <form class="authForm" id="authForm">
+                <input class="input" placeholder="Введите ФИО" type="text" id="fullName" required minlength="2" />
+                <button type="submit" class="startButton" id="startButton" disabled>Начать</button>
+                <a type="button" class="resultsButton" href="./results.html">Посмотреть результату</a>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="./js/testData.js"></script>
+<script src="./js/index.js"></script>
+
+</html>

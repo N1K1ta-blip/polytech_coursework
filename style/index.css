@@ -1,0 +1,96 @@
+.startBlock__title {
+    text-align: center;
+}
+
+.startBlock {
+    width: 550px;
+    height: 350px;
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.startBlock.startAnimation {
+    opacity: 0;
+    animation: appearStart 1s 2.2s ease-out forwards;
+}
+
+.startBlock.endAnimation {
+    opacity: 1;
+    animation: appearEnd 2.2s forwards;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: grey
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 40px;
+    align-items: center;
+}
+
+.input {
+    width: 100%;
+    border-radius: 2px;
+    background-color: white;
+    border: 1px solid black;
+    padding: 2px 5px;
+}
+
+.startButton {
+    padding: 12px 24px;
+    background-color: rgb(62, 206, 62);
+    border: 1px solid green;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.startButton:hover {
+    background-color: rgb(25, 171, 25);
+}
+
+.startButton:disabled {
+    background-color: rgb(113, 225, 113);
+    cursor: default;
+}
+
+.resultsButton {
+    font-size: 16px;
+    padding: 12px 24px;
+    border: 1px solid black;
+    color: black;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.resultsButton:hover {
+    color: black;
+    cursor: pointer;
+}
+
+@keyframes appearStart {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes appearEnd {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

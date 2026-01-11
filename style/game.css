@@ -1,0 +1,194 @@
+body {
+    background-image: url("../assents/sky.jpg");
+}
+
+.gameStartPage {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.road {
+    height: 80vh;
+    width: 100%;
+    background-image: url("../assents/road.jpg");
+    background-size: contain;
+    background-repeat: repeat-x;
+    position: absolute;
+    bottom: 0;
+}
+
+.matryoshka {
+    width: 150px;
+    height: 300px;
+    background-image: url("../assents/matryoshka.png");
+    position: absolute;
+    z-index: 11;
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: left 0.01s ease;
+}
+
+.matryoshka.secondLevel {
+    left: 200px;
+    cursor: grab;
+    user-select: none;
+}
+
+.fence {
+    position: absolute;
+    z-index: 11;
+    width: 350px;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.secondLevelCheckButton {
+    position: absolute;
+    z-index: 11;
+    bottom: 60vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.matryoshka_sisters {
+    position: absolute;
+    z-index: 11;
+    bottom: 0;
+    right: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.matryoshka_sisters div{
+    width: 150px;
+    height: 300px;
+    background-image: url("../assents/matryoshka.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.matryoshka_sisters .matryoshka_sister_1 {
+    width: 120px;
+    height: 260px;
+}
+
+
+.matryoshka_sisters .matryoshka_sister_2 {
+    width: 100px;
+    height: 240px;
+}
+
+.matryoshka_sisters .matryoshka_sister_3 {
+    width: 80px;
+    height: 200px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 50px;
+    gap: 50px;
+}
+
+.header__timer {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.header__description {
+    text-align: center;
+}
+
+.header__heartsWithButton {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.header__heartsWithButton_hearts {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    width: 84px;
+}
+
+.header__heartsWithButton_hearts img {
+    width: 20px;
+    height: 20px;
+}
+
+.header__heartsWithButton_button {
+    background-color: rgb(175, 170, 170);
+    color: white;
+    font-family: 20px;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.roadNavigate {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 35px;
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+}
+
+.roadNavigate_nextLevel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 35px;
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+}
+
+.roadNavigate__item {
+    border: 2px solid grey;
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    font-weight: 500;
+    background-color: rgb(209, 201, 201);
+}
+
+.falling-item {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+}
+
+.levelDescription {
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 11;
+}

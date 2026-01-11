@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Матрешка - уровень 1</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/game.css">
+</head>
+
+<body>
+    <div class="gameStartPage" id="gameStartPage">
+        <div class="header">
+            <div class="header__timer" id="timer">
+                00:00
+            </div>
+            <h4 class="header__description">
+                Это первый уровень. Тут необходимо собрать все съедобные объекты. Для сбора необходимо кликать по ним
+            </h4>
+            <div class="header__heartsWithButton">
+                <div class="header__heartsWithButton_hearts" id="hearts">
+                </div>
+                <button class="header__heartsWithButton_button" id="autoButton">Автозапуск</button>
+            </div>
+        </div>
+        <h4 class="levelDescription" id="levelDescription"></h4>
+        <div class="matryoshka" id="matryoshka_start"></div>
+        <div class="road"></div>
+        <div class="roadNavigate_nextLevel">
+            <div class="roadNavigate__item" id="nextLevel">
+                Продолжение
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../js/gameSettings.js"></script>
+<script src="../js/time.js"></script>
+<script src="../js/firstLevel.js"></script>
+
+</html>

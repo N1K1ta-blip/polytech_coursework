@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Матрешка - уровень 3</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../style/game.css">
+</head>
+
+<body>
+    <div class="gameStartPage" id="gameStartPage">
+        <div class="header">
+            <div class="header__timer" id="timer">
+                00:00
+            </div>
+            <h4 class="header__description">
+                Это третий и последний уровень. Наша матрешка наконе-то дошла до своих сестер, но они упали. Кликая по ним, помоги им подняться
+            </h4>
+            <div class="header__heartsWithButton">
+                <div class="header__heartsWithButton_hearts" id="hearts">
+                </div>
+                <button class="header__heartsWithButton_button" id="autoButton">Автозапуск</button>
+            </div>
+        </div>
+        <button class="secondLevelCheckButton" id="thirdLevelCheckButton">Проверить</button>
+        <div class="matryoshka secondLevel" id="matryoshka_start"></div>
+        <div  class="matryoshka_sisters">
+            <div class="matryoshka_sister_1" id="matryoshka_sister_1"></div>
+            <div class="matryoshka_sister_2" id="matryoshka_sister_2"></div>
+            <div class="matryoshka_sister_3" id="matryoshka_sister_3"></div>
+        </div>
+        <div class="road"></div>
+    </div>
+</body>
+<script src="../js/gameSettings.js"></script>
+<script src="../js/time.js"></script>
+<script src="../js/thirdLevel.js"></script>
+
+</html>

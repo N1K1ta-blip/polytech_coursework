@@ -1,0 +1,127 @@
+.loader {
+    position: absolute;
+    width: 400px;
+    height: 550px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    animation: appear 0.6s ease-out forwards;
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 400px;
+    height: 275px;
+}
+
+.loader::before {
+    top: 0;
+    background-image: url("../assents/matryoshka_firstHalf.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.loader::after {
+    bottom: 0;
+    background-image: url("../assents/matryoshka_secondHalf.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.firstAnimation {
+    animation:
+        appear 0.6s ease-out forwards,
+        wobble 1.6s 0.6s ease-in-out;
+}
+
+.firstAnimation::before {
+    animation: split1 1s 2.2s forwards;
+}
+
+.firstAnimation::after {
+    animation: split2 1s 2.2s forwards;
+}
+
+.secondAnimation {
+    opacity: 0;
+    transform: scale(0.4);
+    animation: appear 0.6s ease-out forwards;
+}
+
+.secondAnimation::before {
+    transform: translateY(-300px);
+    opacity: 0;
+    animation: assembleTop 0.8s 0.6s ease-out forwards;
+}
+
+.secondAnimation::after {
+    transform: translateY(300px);
+    opacity: 0;
+    animation: assembleBottom 0.8s 0.6s ease-out forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-4deg);
+    }
+
+    75% {
+        transform: rotate(4deg);
+    }
+}
+
+@keyframes split1 {
+    to {
+        opacity: 0;
+        transform: translateY(-300px);
+    }
+}
+@keyframes split2 {
+    to {
+        opacity: 0;
+        transform: translateY(300px);
+    }
+}
+
+@keyframes assembleTop {
+    from {
+        transform: translateY(-300px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes assembleBottom {
+    from {
+        transform: translateY(300px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
