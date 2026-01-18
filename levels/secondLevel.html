@@ -12,6 +12,12 @@
 
 <body>
     <div class="gameStartPage" id="gameStartPage">
+        <div class="menu">
+            <a class="menu-link" href="../game.html">Подготовка к игре</a>
+            <a class="menu-link" href="./firstLevel.html">Уровень 1</a>
+            <a class="menu-link active" href="./secondLevel.html">Уровень 2</a>
+            <a class="menu-link" href="./thirdLevel.html">Уровень 3</a>
+        </div>
         <div class="header">
             <div class="header__timer" id="timer">
                 00:00
@@ -22,10 +28,10 @@
             <div class="header__heartsWithButton">
                 <div class="header__heartsWithButton_hearts" id="hearts">
                 </div>
-                <button class="header__heartsWithButton_button" id="autoButton">Автозапуск</button>
             </div>
         </div>
-        <button class="secondLevelCheckButton" id="secondLevelCheckButton">Проверить</button>
+        <h3 class="levelDescription" id="levelDescription"></h3>
+        <button class="nextLevelButton" id="nextLevelButton">Перейти на следующий уровень</button>
         <div class="matryoshka secondLevel" id="matryoshka_start"></div>
         <img src="../assents/fence.png" class="fence" id="fence" />
         <div class="road"></div>

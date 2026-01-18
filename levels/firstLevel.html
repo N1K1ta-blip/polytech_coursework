@@ -12,27 +12,28 @@
 
 <body>
     <div class="gameStartPage" id="gameStartPage">
+        <div class="menu">
+            <a class="menu-link" href="../game.html">Подготовка к игре</a>
+            <a class="menu-link active" href="./firstLevel.html">Уровень 1</a>
+            <a class="menu-link" href="./secondLevel.html">Уровень 2</a>
+            <a class="menu-link" href="./thirdLevel.html">Уровень 3</a>
+        </div>
         <div class="header">
             <div class="header__timer" id="timer">
                 00:00
             </div>
             <h3 class="header__description">
-                Это первый уровень. Тут необходимо собрать все съедобные объекты. Для сбора необходимо кликать по ним
+                Это первый уровень. Тут необходимо собрать все съедобные объекты (ягоды и грибы). Для сбора необходимо перешещать матрешку с помощью стрелок вправо и влево.
             </h3>
             <div class="header__heartsWithButton">
                 <div class="header__heartsWithButton_hearts" id="hearts">
                 </div>
-                <button class="header__heartsWithButton_button" id="autoButton">Автозапуск</button>
             </div>
         </div>
         <h3 class="levelDescription" id="levelDescription"></h3>
+        <button class="nextLevelButton" id="nextLevelButton">Перейти на следующий уровень</button>
         <div class="matryoshka" id="matryoshka_start"></div>
         <div class="road"></div>
-        <div class="roadNavigate_nextLevel">
-            <div class="roadNavigate__item" id="nextLevel">
-                Продолжение
-            </div>
-        </div>
     </div>
 </body>
 <script src="../js/gameSettings.js"></script>

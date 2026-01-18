@@ -7,29 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gameArea = document.getElementById('gameStartPage')
     const description = document.getElementById('levelDescription')
-    const nextLevelBlock = document.getElementById('nextLevel')
     const matryoshka = document.getElementById('matryoshka_start')
     const container = document.getElementById('gameStartPage')
-    const autoButton = document.getElementById('autoButton')
+    const nextLevelButton = document.getElementById('nextLevelButton')
 
     let collected = 0
-    let position = container.clientWidth / 2
     let lives = parseInt(localStorage.getItem('hearts'))
     let autoMode = false
+    let position = container.clientWidth / 2
+    const SPEED = 500
+    let direction = 0
+    let isAnimating = false
+    let isWon = false
 
     localStorage.setItem('autoMode', 'false')
 
     checkLocalStorage()
 
     updateHearts(lives)
-
-    autoButton.addEventListener('click', (e) => {
-        e.preventDefault()
-        localStorage.setItem('autoMode', true)
-        autoMode = true
-        spawnInterval = 1000
-        fallDuration = 3000
-    });
 
     const loseLife = () => {
         lives--
@@ -42,8 +37,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const collectItem = () => {
         collected++
-        if (collected >= itemsToCollect) {
-            nextLevel()
+        if (collected === itemsToCollect) {
+            confirmModal()
+            isWon = true
+        }
+    }
+
+    const animate = (currentTime) => {
+        if (direction !== 0) {
+            if (!animate.lastFrameTime) {
+                animate.lastFrameTime = currentTime
+            }
+            const deltaTime = (currentTime - animate.lastFrameTime) / 1000
+            position += direction * SPEED * deltaTime
+            updatePosition(position)
+            animate.lastFrameTime = currentTime
+        } else {
+            animate.lastFrameTime = null;
+        }
+
+        if (direction !== 0) {
+            requestAnimationFrame(animate)
+        } else {
+            isAnimating = false
+        }
+    }
+
+    const startAnimation = () => {
+        if (!isAnimating && direction !== 0) {
+            isAnimating = true
+            animate.lastFrameTime = null
+            requestAnimationFrame(animate)
+        }
+    }
+
+    const handleKeydown = (e) => {
+        if (e.key === 'ArrowLeft') {
+            direction = -1
+            e.preventDefault()
+        } else if (e.key === 'ArrowRight') {
+            direction = 1
+            e.preventDefault()
+        } else {
+            return
+        }
+        startAnimation()
+    }
+
+    const handleKeyup = (e) => {
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+            direction = 0
+            e.preventDefault()
         }
     }
 
@@ -69,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let removed = false
 
-        if (autoMode && isEdible) {
+        if (autoMode && isEdible && collected < itemsToCollect) {
             setTimeout(() => {
                 if (!removed) {
                     removed = true;
@@ -90,12 +134,30 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentTop = -60 + progress * (gameArea.clientHeight + 60)
             item.style.top = `${currentTop}px`
 
+            if (!removed) {
+                const matRect = matryoshka.getBoundingClientRect()
+                const itemRect = item.getBoundingClientRect()
+                if (isColliding(matRect, itemRect)) {
+                    removed = true;
+                    item.remove();
+                    if (isEdible) {
+                        collectItem()
+                    } else {
+                        if (!isWon) {
+                            loseLife()
+                        }
+                    }
+                }
+            }
+
             if (progress < 1) {
-                requestAnimationFrame(animate);
+                requestAnimationFrame(animate)
             } else {
                 if (!removed) {
                     if (isEdible) {
-                        loseLife()
+                        if (!isWon) {
+                            loseLife()
+                        }
                     }
                     item.remove()
                 }
@@ -103,17 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         requestAnimationFrame(animate)
-
-        item.addEventListener('click', () => {
-            removed = true
-            item.remove()
-
-            if (isEdible) {
-                collectItem()
-            } else {
-                loseLife()
-            }
-        });
     }
 
     setInterval(() => {
@@ -125,29 +176,27 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(updateDescription)
     }
 
-    const nextLevel = () => {
-        gameWon = true
-        const startRect = nextLevelBlock.getBoundingClientRect()
-
-        const targetXWindow = startRect.left + startRect.width / 2
-
-        const moveTowardsTarget = () => {
-            const nowRect = matryoshka.getBoundingClientRect()
-            const nowX = nowRect.left + nowRect.width / 2
-            const dist = targetXWindow - nowX
-
-            position += Math.sign(dist) * 6;
-
-            updatePosition(position)
-            checkCollisions(() => {
-                localStorage.setItem('levels', '1')
-                window.location.href = '../levels/secondLevel.html'
-            }, nextLevelBlock)
-            requestAnimationFrame(moveTowardsTarget)
+    const confirmModal = () => {
+        const isNextLevel = confirm("Вы прошли первый уровень. Перейти на следующий уровень? Если захотите остаться на этом уровне, то для перехода дальше можно воспользоваться появившейся кнопкой")
+        if (isNextLevel) {
+            nextLevel()
+        } else {
+            nextLevelButton.style.display = 'block'
         }
-
-        moveTowardsTarget()
     }
+
+    const nextLevel = () => {
+        localStorage.setItem('levels', '1')
+        window.location.href = '../levels/secondLevel.html'
+    }
+
+    nextLevelButton.addEventListener('click', (e) => {
+        e.preventDefault()
+        nextLevel()
+    })
+
+    window.addEventListener('keydown', handleKeydown)
+    window.addEventListener('keyup', handleKeyup)
 
     updateDescription()
 });

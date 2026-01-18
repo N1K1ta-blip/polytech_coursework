@@ -52,6 +52,9 @@ const updatePosition = (position) => {
 }
 
 const updateHearts = (lives) => {
+    if(lives < 0) {
+        lives = 3
+    }
     heartsContainer.innerHTML = ''
     for (let i = 0; i < lives; i++) {
         const heart = document.createElement('img')

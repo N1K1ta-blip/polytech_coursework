@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('gameStartPage')
   const exitBlock = document.getElementById('exitBlock')
   const startBlock = document.getElementById('startBlock')
-  const autoButton = document.getElementById('autoButton')
 
   let position = container.clientWidth / 2
   const SPEED = 300
@@ -14,12 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   localStorage.setItem('autoMode', 'false')
   localStorage.setItem('gameTime', Date.now().toString())
-
-  autoButton.addEventListener('click', (e) => {
-    e.preventDefault()
-    localStorage.setItem('autoMode', true)
-    startAutoMode()
-  });
 
   const animate = (currentTime) => {
     if (direction !== 0) {
@@ -84,30 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('gameTime', startTime.toString())
 
     window.location.href = './levels/firstLevel.html'
-  }
-
-  const startAutoMode = () => {
-    if (gameStarted || autoMode) return
-    const startRect = startBlock.getBoundingClientRect()
-
-    const targetXWindow = startRect.left + startRect.width / 2
-
-    autoMode = true
-    direction = 0
-
-    const moveTowardsTarget = () => {
-      const nowRect = matryoshka.getBoundingClientRect()
-      const nowX = nowRect.left + nowRect.width / 2
-      const dist = targetXWindow - nowX
-
-      position += Math.sign(dist) * 6;
-
-      updatePosition(position)
-      checkCollisions(startGame, startBlock, exitBlock)
-      requestAnimationFrame(moveTowardsTarget)
-    }
-
-    moveTowardsTarget()
   }
 
   window.addEventListener('keydown', handleKeydown)

@@ -20,7 +20,7 @@ body {
 
 .matryoshka {
     width: 150px;
-    height: 300px;
+    height: 200px;
     background-image: url("../assents/matryoshka.png");
     position: absolute;
     z-index: 11;
@@ -60,23 +60,39 @@ body {
     font-size: 18px;
 }
 
+.nextLevelButton {
+    position: absolute;
+    z-index: 11;
+    bottom: 60vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    display: none;
+}
+
 .matryoshka_sisters {
     position: absolute;
     z-index: 11;
     bottom: 0;
-    right: 100px;
+    width: 100%;
+    height: 50vh;
     display: flex;
     flex-direction: row;
     gap: 12px;
 }
 
-.matryoshka_sisters div{
+.matryoshka_sisters div {
     width: 150px;
     height: 300px;
     background-image: url("../assents/matryoshka.png");
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
+    position: absolute;
 }
 
 .matryoshka_sisters .matryoshka_sister_1 {
@@ -138,6 +154,28 @@ body {
     font-family: 20px;
     border-radius: 5px;
     padding: 5px 10px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    padding: 20px 50px;
+    gap: 24px;
+}
+
+.menu-link {
+    background-color: white;
+    border: 2px;
+    color: black;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+.menu-link.active {
+    color: blue;
+    font-weight: 600;
 }
 
 .roadNavigate {
